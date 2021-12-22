@@ -1,6 +1,5 @@
-/**
-   This example turns the ESP32 into a Bluetooth LE keyboard that writes the words, presses Enter, presses a media key and then Ctrl+Alt+Delete
-*/
+// Custom Macropad for your favourite apps
+
 #include <BleKeyboard.h>
 
 BleKeyboard bleKeyboard;
@@ -18,23 +17,89 @@ int lastButtonState = LOW;   // the previous reading from the input pin
 unsigned long lastDebounceTime = 0;  // the last time the output pin was toggled
 unsigned long debounceDelay = 10;    // the debounce time; increase if the output flickers
 
+/*//primitives
+  int x = 1;
+  float y = 4.3;
+  double z = 4.33;
+  char c = 'c';
+
+  char sc[] = {'H','e','l','l','o','w','o','r','l','d'};
+
+  // object
+  String s = "Hello World";
+
+*/
+
+class Button {
+    int key;
+    int state;
+    int lastState = LOW;
+
+  public:
+    int pin;
+
+    Button(int _pin, int _key) {
+      pin = _pin;
+      key = _key;
+    }
+};
+
+
+class Keypad {
+    int numberOfButtons;
+    Button buttons[];
+
+  public:
+    Keypad(Button _buttons[]) {
+      numberOfButtons = sizeof(_buttons) / sizeof(_buttons[0]);
+
+      for (int i = 0; i < numberOfButtons; i++) {
+        buttons[i] = _buttons[i];
+      }
+    }
+
+    void setInput() {
+      int i = 0;
+
+
+
+      for (int i = 0; i < numberOfButtons; i++) {
+        pinMode(buttons[i].pin, INPUT);
+      }
+
+    }
+
+};
+
+Button minecraft(2, KEY_F1);
+Button inventor(3, KEY_F2);
+Button cura(5, KEY_F3);
+
+Button buttonArray[] = {minecraft, inventor, cura};
+
+
+Keypad macropad(buttonArray);
+
+
+//Button inventor(3, KEY_F2);
+
+
 void setup() {
   Serial.begin(115200);
   Serial.println("Starting BLE work!");
-  pinMode(buttonPin, INPUT);
+  macropad.setInput();
+  //  pinMode(minecraft.pin, INPUT);
+  //pinMode(buttonPin, INPUT);
   pinMode(ledPin, OUTPUT);
   digitalWrite(ledPin, ledState);
   bleKeyboard.begin();
 }
 
+
 void loop() {
   if (bleKeyboard.isConnected()) {
-
     readSwitch();
     //  Serial.println("Sending 'Hello world'...");
-
-
-
   }
 
   //Serial.println("Waiting 5 seconds...");
