@@ -73,9 +73,16 @@ class Keypad {
 
 Button minecraft(2, KEY_F1);
 Button inventor(3, KEY_F2);
-Button cura(5, KEY_F3);
+Button cura(4, KEY_F3);
+Button discord(5, KEY_F4);
+Button epicgames(6, KEY_F5);
+Button github(7, KEY_F6);
+Button unity(8, KEY_F7);
+Button steam(9, KEY_F8);
+Button chrome(10, KEY_F9);
+Button youtube(11, KEY_F10);
 
-Button buttonArray[] = {minecraft, inventor, cura};
+Button buttonArray[] = {minecraft, inventor, cura, discord, epicgames, github, unity, steam, chrome, youtube};
 
 
 Keypad macropad(buttonArray);
