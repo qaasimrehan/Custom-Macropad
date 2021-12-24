@@ -110,16 +110,21 @@ class Keypad
     }
 };
 
-Button minecraft(2, KEY_F1);
-Button inventor(3, KEY_F2);
-Button cura(4, KEY_F3);
-Button discord(5, KEY_F4);
-Button epicgames(6, KEY_F5);
-Button github(7, KEY_F6);
-Button unity(8, KEY_F7);
-Button steam(9, KEY_F8);
-Button chrome(10, KEY_F9);
-Button youtube(11, KEY_F10);
+Button minecraft(0, KEY_F1);
+Button inventor(12, KEY_F2);
+Button cura(13, KEY_F3);
+Button discord(14, KEY_F4);
+Button epicgames(15, KEY_F5);
+Button github(32, KEY_F6);
+Button unity(33, KEY_F7);
+Button steam(27, KEY_F8);
+Button chrome(34, KEY_F9);
+Button youtube(35, KEY_F10);
+Button Vup(36, KEY_F11);
+Button Vdown(39, KEY_F11);
+
+// Don't Use: 2, 4, 25, 26,
+// Use: 0, 12, 13, 14, 15, 32, 33, 27, 34, 35, 36, 39
 
 Button buttonArray[] = {minecraft, inventor, cura, discord, epicgames, github, unity, steam, chrome, youtube};
 
