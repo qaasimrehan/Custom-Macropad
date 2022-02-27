@@ -126,7 +126,9 @@ Button Vdown(39, KEY_F11);
 // Don't Use: 2, 4, 25, 26,
 // Use: 0, 12, 13, 14, 15, 32, 33, 27, 34, 35, 36, 39
 
-Button buttonArray[] = {minecraft, inventor, cura, discord, epicgames, github, unity, steam, chrome, youtube};
+Button buttonArray[] = {minecraft};
+
+//, inventor, cura, discord, epicgames, github, unity, steam, chrome, youtube
 
 Keypad macropad(buttonArray);
 
