@@ -69,55 +69,72 @@ void loop() {
   // Type a message on the Keyboard when each button presses
   // Update the Joystick buttons only upon changes.
   // falling = high (not pressed - voltage from pullup resistor)
-  //           to low (pressed - button connects pin to ground)
+  // to low (pressed - button connects pin to ground)
 
   if (button1.fallingEdge()) {
-    Keyboard.press(KEY_F1);
-    Keyboard.release(KEY_F1);
+ uint8_t tmp = USB0_CTL;
+    USB0_CTL |= USB_CTL_RESUME;
+    delay(12);
+    USB0_CTL = tmp;
   }
   if (button2.fallingEdge()) {
-    Keyboard.press(KEY_F2);
-    Keyboard.release(KEY_F2);
-  }
-  if (button3.fallingEdge()) {
-    Keyboard.press(KEY_F3);
-    Keyboard.release(KEY_F3);
-  }
-  if (button4.fallingEdge()) {
-    Keyboard.press(KEY_F4);
-    Keyboard.release(KEY_F4);
-  }
-  if (button5.fallingEdge()) {
-    Keyboard.press(KEY_F5);
-    Keyboard.release(KEY_F5);
-  }
-  if (button6.fallingEdge()) {
-    Keyboard.press(KEY_F6);
-    Keyboard.release(KEY_F6);
-  }
-  if (button7.fallingEdge()) {
+    Keyboard.press(MODIFIERKEY_SHIFT);
     Keyboard.press(KEY_F7);
+    Keyboard.release(MODIFIERKEY_SHIFT);
     Keyboard.release(KEY_F7);
   }
+  if (button3.fallingEdge()) {
+    Keyboard.press(MODIFIERKEY_SHIFT);
+    Keyboard.press(KEY_F6);
+    Keyboard.release(MODIFIERKEY_SHIFT);
+    Keyboard.release(KEY_F6);
+  }
+  if (button4.fallingEdge()) {
+    Keyboard.press(MODIFIERKEY_SHIFT);
+    Keyboard.press(KEY_F3);
+    Keyboard.release(MODIFIERKEY_SHIFT);
+    Keyboard.release(KEY_F3);
+  }
+  if (button5.fallingEdge()) {
+    Keyboard.press(KEY_SYSTEM_SLEEP);
+    Keyboard.release(KEY_SYSTEM_SLEEP);
+  }
+  if (button6.fallingEdge()) {
+    Keyboard.press(KEY_MEDIA_MUTE);
+    Keyboard.release(KEY_MEDIA_MUTE);
+  }
+  if (button7.fallingEdge()) {
+    Keyboard.press(MODIFIERKEY_SHIFT);
+    Keyboard.press(KEY_F4);
+    Keyboard.release(MODIFIERKEY_SHIFT);
+    Keyboard.release(KEY_F4);
+  }
   if (button8.fallingEdge()) {
-    Keyboard.press(KEY_F8);
-    Keyboard.release(KEY_F8);
+    Keyboard.press(MODIFIERKEY_SHIFT);
+    Keyboard.press(KEY_F5);
+    Keyboard.release(MODIFIERKEY_SHIFT);
+    Keyboard.release(KEY_F5);
   }
   if (button9.fallingEdge()) {
-    Keyboard.press(KEY_F9);
-    Keyboard.release(KEY_F9);
+    Keyboard.press(KEY_MEDIA_VOLUME_INC);
+    Keyboard.release(KEY_MEDIA_VOLUME_INC);
   }
   if (button10.fallingEdge()) {
-    Keyboard.press(KEY_F10);
-    Keyboard.release(KEY_F10);
+    Keyboard.press(KEY_MEDIA_VOLUME_DEC);
+    Keyboard.release(KEY_MEDIA_VOLUME_DEC);
   }
   if (button11.fallingEdge()) {
-    Keyboard.press(KEY_F11);
-    Keyboard.release(KEY_F11);
+    Keyboard.press(MODIFIERKEY_SHIFT);
+    Keyboard.press(KEY_F2);
+    Keyboard.release(MODIFIERKEY_SHIFT);
+    Keyboard.release(KEY_F2);
+    
   }
   if (button12.fallingEdge()) {
-    Keyboard.press(KEY_F12);
-    Keyboard.release(KEY_F12);
+    Keyboard.press(MODIFIERKEY_SHIFT);
+    Keyboard.press(KEY_F1);
+    Keyboard.release(MODIFIERKEY_SHIFT);
+    Keyboard.release(KEY_F1);
   }
 
 }
